@@ -1,7 +1,9 @@
 .App {
   margin: auto;
 }
-
+html {
+  background-color: gray;
+}
 .header-name {
   color: blue;
   text-align: center;
@@ -44,7 +46,8 @@
 }
 
 .description {
-  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-  font-weight: 100;
-  color: crimson;
+  font-family: Roboto;
+  font-weight: 400;
+  font-size: 13px;
+  color: black;
 }

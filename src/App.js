@@ -77,58 +77,60 @@ class App extends Component {
     let datas = this.state.datas;
     return (
       <>
-        <h1 className="header-name"> {this.state.title}</h1>
-        <form ref={this.inputText} className="bookmark-form">
-          <label htmlFor="time">Time: </label>
-          <input
-            id="time"
-            type="datetime-local"
-            ref={this.inputText}
-            className="form-input-time"
-          />
-          <br />
-          <label htmlFor="url">Link Address(url): </label>
-          <input
-            id="url"
-            type="text"
-            ref={this.inputText}
-            placeholder="https://www.bookmark.com"
-            className="form-input-url"
-          />
-          <br />
-          <label htmlFor="desc">Description: </label>
-          <input
-            id="desc"
-            type="text"
-            ref={this.inputText}
-            placeholder="this is a website"
-            className="form-input-desc"
-          />
-          <br />
-          <button onClick={(e) => this.fSubmit(e)}>submit</button>
-        </form>
-        <div className="items">
-          <pre>
-            {datas.map((data, i) => (
-              <div key={i} className="myList">
-                {i + 1}.<br />
-                <code>
-                  <h5>{data.time}</h5>
-                </code>
-                <li>
-                  <a href={data.url}>{data.url}</a>
-                </li>
-                <br />
-                <div>
-                  About: <br />
-                  <blockquote className="description">{data.desc}</blockquote>
+        <html>
+          <h1 className="header-name"> {this.state.title}</h1>
+          <form ref={this.inputText} className="bookmark-form">
+            <label htmlFor="time">Time: </label>
+            <input
+              id="time"
+              type="datetime-local"
+              ref={this.inputText}
+              className="form-input-time"
+            />
+            <br />
+            <label htmlFor="url">Link Address(url): </label>
+            <input
+              id="url"
+              type="text"
+              ref={this.inputText}
+              placeholder="https://www.bookmark.com"
+              className="form-input-url"
+            />
+            <br />
+            <label htmlFor="desc">Description: </label>
+            <input
+              id="desc"
+              type="text"
+              ref={this.inputText}
+              placeholder="this is a website"
+              className="form-input-desc"
+            />
+            <br />
+            <button onClick={(e) => this.fSubmit(e)}>submit</button>
+          </form>
+          <div className="items">
+            <pre>
+              {datas.map((data, i) => (
+                <div key={i} className="myList">
+                  {i + 1}.<br />
+                  <code>
+                    <h5>{data.time}</h5>
+                  </code>
+                  <li>
+                    <a href={data.url}>{data.url}</a>
+                  </li>
+                  <br />
+                  <div>
+                    About: <br />
+                    <blockquote className="description">{data.desc}</blockquote>
+                  </div>
+                  <button onClick={() => this.fRemove(i)}>Remove</button>
+                  <button onClick={() => this.fEdit(i)}>edit</button>
                 </div>
-                <button onClick={() => this.fRemove(i)}>Remove</button>
-                <button onClick={() => this.fEdit(i)}>edit</button>
-              </div>
-            ))}
-          </pre>
-        </div>
+              ))}
+            </pre>
+          </div>
+        </html>
       </>
     );
   }
