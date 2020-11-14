@@ -4,7 +4,7 @@ import "./App.css";
 class App extends Component {
   constructor(props) {
     super(props);
-
+    this.inputText = React.createRef();
     this.state = {
       title: "Bookmark Lists",
       act: 0,
@@ -14,16 +14,18 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.refs.time.focus();
+    // this.refs.time.focus();
+    this.inputText.current.focus();
+    console.log(this.inputText);
   }
 
   fSubmit = (e) => {
     e.preventDefault();
     let datas = this.state.datas;
 
-    let time = this.refs.time.value;
-    let url = this.refs.url.value;
-    let desc = this.refs.desc.value;
+    let time = this.inputText.current.time.value;
+    let url = this.inputText.current.url.value;
+    let desc = this.inputText.current.desc.value;
 
     if (this.state.act === 0) {
       let data = {
@@ -44,8 +46,8 @@ class App extends Component {
       act: 0,
     });
 
-    this.refs.myForm.reset();
-    this.refs.time.focus();
+    this.inputText.current.reset();
+    this.inputText.current.time.focus();
   };
 
   fRemove = (i) => {
@@ -55,69 +57,78 @@ class App extends Component {
       datas: datas,
     });
 
-    this.refs.myForm.reset();
-    this.refs.url.focus();
+    this.inputText.current.reset();
+    this.inputText.current.url.focus();
   };
 
   fEdit = (i) => {
     let data = this.state.datas[i];
-    this.refs.time.value = data.time;
-    this.refs.url.value = data.url;
-    this.refs.desc.value = data.desc;
+    this.inputText.current.time.value = data.time;
+    this.inputText.current.url.value = data.url;
+    this.inputText.current.desc.value = data.desc;
     this.setState({
       act: 1,
       index: i,
     });
-    this.refs.url.focus();
+    this.inputText.current.url.focus();
   };
 
   render() {
     let datas = this.state.datas;
     return (
       <>
-        <h1> {this.state.title}</h1>
-        <form ref="myForm">
+        <h1 className="header-name"> {this.state.title}</h1>
+        <form ref={this.inputText} className="bookmark-form">
           <label htmlFor="time">Time: </label>
-          <input id="time" type="datetime-local" ref="time" />
+          <input
+            id="time"
+            type="datetime-local"
+            ref={this.inputText}
+            className="form-input-time"
+          />
           <br />
           <label htmlFor="url">Link Address(url): </label>
           <input
             id="url"
             type="text"
-            ref="url"
+            ref={this.inputText}
             placeholder="https://www.bookmark.com"
+            className="form-input-url"
           />
           <br />
           <label htmlFor="desc">Description: </label>
           <input
             id="desc"
             type="text"
-            ref="desc"
+            ref={this.inputText}
             placeholder="this is a website"
+            className="form-input-desc"
           />
           <br />
           <button onClick={(e) => this.fSubmit(e)}>submit</button>
         </form>
-        <pre>
-          {datas.map((data, i) => (
-            <div key={i} className="myList">
-              {i + 1}.<br />
-              <code>
-                <h5>{data.time}</h5>
-              </code>
-              <li>
-                <a href={data.url}>{data.url}</a>
-              </li>
-              <br />
-              <div>
-                About: <br />
-                <blockquote>{data.desc}</blockquote>
+        <div className="items">
+          <pre>
+            {datas.map((data, i) => (
+              <div key={i} className="myList">
+                {i + 1}.<br />
+                <code>
+                  <h5>{data.time}</h5>
+                </code>
+                <li>
+                  <a href={data.url}>{data.url}</a>
+                </li>
+                <br />
+                <div>
+                  About: <br />
+                  <blockquote className="description">{data.desc}</blockquote>
+                </div>
+                <button onClick={() => this.fRemove(i)}>Remove</button>
+                <button onClick={() => this.fEdit(i)}>edit</button>
               </div>
-              <button onClick={() => this.fRemove(i)}>Remove</button>
-              <button onClick={() => this.fEdit(i)}>edit</button>
-            </div>
-          ))}
-        </pre>
+            ))}
+          </pre>
+        </div>
       </>
     );
   }
