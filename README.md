@@ -19,7 +19,7 @@ A single page APP let you create items of link addresses along with datetime and
 
 ## Object Structure
 
-```javascipt
+```javascript
 
   constructor(props) {
     super(props);
