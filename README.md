@@ -17,7 +17,7 @@ A single page APP let you create items of link addresses along with datetime and
 - [x] Map through the array to display input items
 - [x] Create CSS template
 - [x] Fix deprecated ref attribute with `React.createRef()`
-- [ ] Deploy on AWS
+- [x] Deploy on AWS
 
 ## Object Structure
 
