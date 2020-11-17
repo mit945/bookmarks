@@ -2,7 +2,7 @@
 
 Link: https://master.d2sidtu7oorqv0.amplifyapp.com/
 
-A single page APP let you create items of link addresses along with datetime and descriptions.
+A single page App that lets you create items of link addresses along with retrieval datetimes and descriptions.
 
 ## Application Features
 
