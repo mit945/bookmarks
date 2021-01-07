@@ -117,11 +117,11 @@ class App extends Component {
                     <h5>{data.time}</h5>
                   </code>
                   <li>
-                    <a href={data.url}>{data.url}</a>
+                    <a href={data.url} target={data.url}>{data.url}</a>
                   </li>
                   <br />
                   <div>
-                    About: <br />
+                   <p> About: </p>  <br />
                     <blockquote className="description">{data.desc}</blockquote>
                   </div>
                   <button onClick={() => this.fRemove(i)}>Remove</button>

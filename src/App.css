@@ -2,7 +2,7 @@
   margin: auto;
 }
 html {
-  background-color: gray;
+  background-color: ghostwhite;
 }
 .header-name {
   color: blue;
@@ -46,8 +46,8 @@ html {
 }
 
 .description {
-  font-family: Roboto;
-  font-weight: 400;
-  font-size: 13px;
-  color: black;
+  font-family: Cursive;
+  font-weight: 52;
+  font-size: 20px;
+  color: orange;
 }
